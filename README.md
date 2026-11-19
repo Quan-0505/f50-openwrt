@@ -1,4 +1,10 @@
-[F50 OpenWrt 中文说明](F50.md)
+## F50 固件预发布：v2026.11.19.1
+
+[下载镜像、内核包和 SHA256SUMS](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.19.1) · [中文说明](F50.md)
+
+适用 ZTE F50 / MU300。此预发布基于上游已验签的 v2026.11.02.1 OpenWrt 25.12.6 镜像，在 ARM64 用户空间安装 OpenWrt 软件源的 LuCI 动态 DNS、Cloudflare 支持和简体中文包后重新封装。Linux 6.18.60 内核包原样沿用上游，内建 WireGuard。DDNS 默认关闭，由设备所有者自行设置。
+
+通过了包清单、内核配置和 SHA-256 校验，未在实机刷入。此预发布没有本仓库的固件签名；不通过上游在线更新器推送。正式在用设备继续使用已验签的上游固件。
 
 # Linux on the ZTE F50 / MU300 and U30 Air
 
