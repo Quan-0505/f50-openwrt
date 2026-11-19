@@ -1,12 +1,12 @@
 ## F50 固件预发布：v2026.11.19.1
 
-[查看原始附件和 SHA256SUMS](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.19.1) · [下载 F50 ext4 离线更新 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.19.1/F50-OpenWrt-2026-11-19-25.12.6-ext4.zip) · [中文说明](F50.md)
+[查看 Release](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.19.1) · [下载 F50 ext4 离线更新 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.19.1/F50-OpenWrt-2026-11-19-25.12.6-ext4.zip) · [下载 F50 SquashFS ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.19.1/F50-OpenWrt-2026-11-19-25.12.6-sfs.zip) · [中文说明](F50.md)
 
 适用 ZTE F50 / MU300。此预发布基于上游已验签的 v2026.11.02.1 OpenWrt 25.12.6 镜像，在 ARM64 用户空间安装 OpenWrt 软件源的 LuCI 动态 DNS、Cloudflare 支持和简体中文包后重新封装。Linux 6.18.60 内核包原样沿用上游，内建 WireGuard。DDNS 默认关闭，由设备所有者自行设置。
 
 实机已测试：ZTE F50 / MU300 从 v2026.11.02.1 离线升级到 v2026.11.19.1，重启后确认 Linux 6.18.60、USB 网络和 SSH 正常，LuCI 登录页可访问，原有 6 个附加软件包已恢复。WireGuard 与三个 OPNsense 和 U60 直连通过；重启更换 IPv6 后，Cloudflare AAAA 与新地址一致。DDNS 初次启动遇到 DNS 未就绪，重启 DDNS 服务后恢复；U60 已补充按 F50 域名刷新对端地址。设备保留 v2026.11.02.1 回退。
 
-此预发布没有本仓库的固件签名。ZIP 解压后使用离线更新器读取目录，保留回退；它不是 Magisk 安装包。
+此预发布未签名。ext4 ZIP 解压后可用原生离线更新器读取目录，保留回退。SFS ZIP 内含只读 SquashFS 根文件系统，需要在 Linux 上先运行随附的 prepare-offline-update.sh 生成更新目录；已验证转换结果，未单独实机刷入。两个 ZIP 内均有 SHA256SUMS。
 
 # Linux on the ZTE F50 / MU300 and U30 Air
 
