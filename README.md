@@ -30,7 +30,7 @@
 
 | 格式 | 下载 | 适用场景 |
 | --- | --- | --- |
-| ext4 | [ext4 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.20.2/F50-OpenWrt-2026-11-20.2-25.12.6-ext4.zip) | 推荐。解压后可交给原生离线更新器，升级流程已在上一版实机验证。 |
+| ext4 | [ext4 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.20.2/F50-OpenWrt-2026-11-20.2-25.12.6-ext4.zip) | 推荐。解压后可交给原生离线更新器，本版已通过 F50 实机离线升级。 |
 | SquashFS | [SFS ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.20.2/F50-OpenWrt-2026-11-20.2-25.12.6-sfs.zip) | 只读根文件系统归档。需在 Linux 上转换；已验证转换，未单独刷机。 |
 
 两个 ZIP 均含 `SHA256SUMS`。它们是离线更新包，不是 Magisk 安装包。
@@ -58,7 +58,7 @@ SFS ZIP 解压后，先在 Linux 上安装 `squashfs-tools`，运行 `sudo sh ./
 
 ## 实机验证
 
-`v2026.11.20.2` 已校验固件包，尚未刷机。此前，一台 F50 从上游 `v2026.11.02.1` 实机升级到 `v2026.11.19.1` 并正常启动；USB 网络、SSH、LuCI 登录页正常，原有 6 个附加软件包恢复。WireGuard 到三家 OPNsense 和 U60 的直连通过，设备保留上游版供回退。
+`v2026.11.20.2` 的 ext4 包已在一台 F50 上从 `v2026.11.19.1` 离线升级。重启后 USB SSH 正常，daed 3.2.2 自动启动，原账号可登录，4 条订阅与 3 个策略组保留。三家 OPNsense 的 WireGuard 直连正常，Cloudflare AAAA 已更新；U60 在本轮验证中通过备用路径可达，未确认恢复直连。设备保留 `v2026.11.19.1` 回退。此前，一台 F50 从上游 `v2026.11.02.1` 实机升级到 `v2026.11.19.1` 并正常启动；USB 网络、SSH、LuCI 登录页正常，原有 6 个附加软件包恢复。WireGuard 到三家 OPNsense 和 U60 的直连通过，设备保留上游版供回退。
 
 首次开机时 DNS 尚未就绪。本次在重启 DDNS 服务后确认 Cloudflare AAAA 更新；自动恢复时延尚未验证。SFS 版只做了解包和转换比对。
 
