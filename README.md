@@ -6,7 +6,7 @@
 
 [![OpenWrt](https://img.shields.io/badge/OpenWrt-25.12.6-orange?style=flat-square)](https://openwrt.org/)
 [![Linux](https://img.shields.io/badge/Linux-6.18.60-blue?style=flat-square)](https://github.com/dikeckaan/mu300-linux/releases/tag/v2026.11.02.1)
-[![Release](https://img.shields.io/badge/Release-v2026.11.19.1-informational?style=flat-square)](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.19.1)
+[![Release](https://img.shields.io/badge/Release-v2026.11.20.1-informational?style=flat-square)](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.20.1)
 [![Downloads](https://img.shields.io/github/downloads/Quan-0505/f50-openwrt/total?style=flat-square)](https://github.com/Quan-0505/f50-openwrt/releases)
 
 [固件下载](#downloads) · [离线升级](#upgrade) · [实机验证](#validation) · [配置与构建](#build) · [上游文档](README.upstream.md)
@@ -19,18 +19,19 @@
 
 - **OpenWrt 25.12.6 + Linux 6.18.60**：基于 [MU300 Linux v2026.11.02.1](https://github.com/dikeckaan/mu300-linux/releases/tag/v2026.11.02.1)，沿用上游内核。
 - **WireGuard**：内核已内建支持，镜像包含命令行工具和 LuCI 插件，可配置公网 IPv6 对端。
+- **daed 面板入口**：安装 daed 后，可在 LuCI 的「服务 → daed」打开现有面板。镜像不附带 daed 程序。
 - **Cloudflare DDNS**：预装 LuCI 动态 DNS、Cloudflare 支持和简体中文包。DDNS 默认关闭，启用前需填写自己的域名和凭据。
 
 <a id="downloads"></a>
 
 ## 固件下载
 
-当前版本：[v2026.11.19.1](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.19.1) · **未签名预发布** · 适用中兴 F50（MU300 / UMS9620）。
+当前版本：[v2026.11.20.1](https://github.com/Quan-0505/f50-openwrt/releases/tag/v2026.11.20.1) · **未签名预发布** · 适用中兴 F50（MU300 / UMS9620）。
 
 | 格式 | 下载 | 适用场景 |
 | --- | --- | --- |
-| ext4 | [ext4 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.19.1/F50-OpenWrt-2026-11-19-25.12.6-ext4.zip) | 推荐。已实机验证，解压后可直接交给原生离线更新器。 |
-| SquashFS | [SFS ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.19.1/F50-OpenWrt-2026-11-19-25.12.6-sfs.zip) | 只读根文件系统归档。需在 Linux 上转换；已验证转换，未单独刷机。 |
+| ext4 | [ext4 ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.20.1/F50-OpenWrt-2026-11-20-25.12.6-ext4.zip) | 推荐。解压后可交给原生离线更新器，升级流程已在上一版实机验证。 |
+| SquashFS | [SFS ZIP](https://github.com/Quan-0505/f50-openwrt/releases/download/v2026.11.20.1/F50-OpenWrt-2026-11-20-25.12.6-sfs.zip) | 只读根文件系统归档。需在 Linux 上转换；已验证转换，未单独刷机。 |
 
 两个 ZIP 均含 `SHA256SUMS`。它们是离线更新包，不是 Magisk 安装包。
 
@@ -57,7 +58,7 @@ SFS ZIP 解压后，先在 Linux 上安装 `squashfs-tools`，运行 `sudo sh ./
 
 ## 实机验证
 
-在一台 F50 上从上游 `v2026.11.02.1` 升级到 `v2026.11.19.1`。确认新版启动，USB 网络、SSH、LuCI 登录页正常，原有 6 个附加软件包恢复。WireGuard 到三家 OPNsense 和 U60 的直连通过，设备保留上游版供回退。
+上一版 `v2026.11.19.1` 已在一台 F50 上从上游 `v2026.11.02.1` 实机升级。新版 `v2026.11.20.1` 已校验固件包，尚未刷机。确认新版启动，USB 网络、SSH、LuCI 登录页正常，原有 6 个附加软件包恢复。WireGuard 到三家 OPNsense 和 U60 的直连通过，设备保留上游版供回退。
 
 首次开机时 DNS 尚未就绪。本次在重启 DDNS 服务后确认 Cloudflare AAAA 更新；自动恢复时延尚未验证。SFS 版只做了解包和转换比对。
 

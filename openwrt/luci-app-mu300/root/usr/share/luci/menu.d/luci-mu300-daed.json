@@ -1,0 +1,11 @@
+{
+	"admin/services/daed": {
+		"title": "daed",
+		"order": 65,
+		"action": { "type": "view", "path": "mu300/daed" },
+		"depends": {
+			"acl": [ "luci-app-mu300" ],
+			"fs": { "/usr/bin/daed": "executable" }
+		}
+	}
+}
